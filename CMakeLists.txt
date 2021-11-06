@@ -7,7 +7,7 @@
 #-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 
 #-----------------------------------------------------------------------------
@@ -122,7 +122,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
     add_custom_target(coverage
         ${GCOVR}
         ${CMAKE_BINARY_DIR}
-        --root=${CMAKE_SOURCE_DIR}
+        --root=${CMAKE_CURRENT_SOURCE_DIR}
         --html --html-details
         #--verbose
         #--keep
@@ -330,7 +330,7 @@ if(CPPCHECK)
     add_custom_target(cppcheck
         ${CPPCHECK}
         --std=c++11 ${CPPCHECK_OPTIONS}
-        -I ${CMAKE_SOURCE_DIR}/include
+        -I ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CPPCHECK_FILES}
     )
 else()
